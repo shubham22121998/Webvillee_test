@@ -224,7 +224,10 @@ const activateDeactivateCustomerAccountController = async (
                     "apiKeyAuth": []
             }] */
     let requestBody = req.body;
-    if (!requestBody.account_status) {
+    if (
+      requestBody.account_status === undefined ||
+      requestBody.account_status === ""
+    ) {
       return res
         .status(422)
         .json({ message: "Please Enter Valid account Status" });
